@@ -1,0 +1,10 @@
+import mensajeros.*
+import memsajeria.*
+
+describe "group of tests for mensajeros" {
+
+  test "neo puede llevar paquete a puente" {
+    assert.that(paquete.puedeSerEntregado(neo))
+  }
+
+}
