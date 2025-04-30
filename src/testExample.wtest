@@ -1,5 +1,5 @@
 import mensajeros.*
-import memsajeria.*
+import mensajeria.*
 
 describe "group of tests for mensajeros" {
 
@@ -7,4 +7,18 @@ describe "group of tests for mensajeros" {
     assert.that(paquete.puedeSerEntregado(neo))
   }
 
+  test "facturacion con el paqueton sin pagar" {
+    empresa.enviar(paquete)
+    empresa.enviar(paquetito)
+    empresa.enviar(paqueton)
+    assert.equals( 50, empresa.facturacion() )
+  }
+
+    test "facturacion con el paqueton pagado" {
+    empresa.enviar(paquete)
+    empresa.enviar(paquetito)
+    paqueton.pagar(200)
+    empresa.enviar(paqueton)
+    assert.equals( 250, empresa.facturacion() )
+  }
 }

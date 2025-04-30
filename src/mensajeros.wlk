@@ -8,7 +8,31 @@ object paquete {
   method destino(nuevo){
     destino = nuevo
   }
+  method precio() = 50
 }
+
+object paquetito{
+  method puedeSerEntregado(alguien) = true
+  method estaPago() = true
+  method precio() = 0
+}
+
+object paqueton{
+ const destinos = [matrix,puente]
+ var pagado = 0
+ method puedeSerEntregado(alguien) = self.estaPago() and self.pasaPorTodos(alguien)
+
+ method pasaPorTodos(mensajero) = destinos.all({d=> d.dejaPasar(mensajero)})
+ method estaPago() = pagado >= self.precio()
+
+ method precio() = destinos.size() * 100
+ method pagar(importe) {
+  pagado = pagado + importe
+ }
+}
+
+
+
 
 object puente{
   method dejaPasar(alguien)= alguien.peso() <= 1000
