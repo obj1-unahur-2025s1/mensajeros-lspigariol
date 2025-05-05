@@ -55,3 +55,4 @@ object empresa{
   method pendienteCaro() = pendientes.max{p=>p.precio()}
 }
 
+
